@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
 </head>
 
-<div class="container-fluid">
+<div id="container" class="container-fluid">
 <header>
 	<nav class="navbar">
 	    <div class="navbar-header">
