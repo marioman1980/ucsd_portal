@@ -1,0 +1,42 @@
+
+body {
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 18px;
+}
+h1, h3 {
+	font-family: 'Oswald', sans-serif;
+}
+h1 {
+	float: left;
+}
+
+img {
+	float: left;
+}
+/*.panel-heading {
+	text-align: center;
+}*/
+@media only screen and (min-width: 992px) {
+	.panel-left {
+		margin-left: 50;
+	}	
+	.panel-right {
+		margin-right: 50;
+	}	
+}
+.panel-default .panel-heading {
+	background-color: #8FC41C;
+}
+a {
+	color: black
+}
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
+.panel-body ul {
+	list-style: none;
+}
+#user_welcome:hover {
+	background-color: white;
+}
