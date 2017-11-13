@@ -18,10 +18,19 @@ class User_model extends CI_Model {
     	$query = $this->db->get();
 
     	return $query->row();
-
     }
 
-    //public function 
+    public function validate_user(){
+        $this->db->where('username', $this->input->post('username'));
+        $query = $this->db->get('users');
+        if ($query->num_rows() == 0){
+            return false;/* If username doesn't exist */
+        }
+        else{
+            $row = $query->row();
+            return $row;      
+        }
+    }
 }
 
 ?>

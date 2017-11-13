@@ -1,4 +1,4 @@
-<?php $logged_in = 0; ?>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
 </head>
 
+<body>
 <div id="container" class="container-fluid">
 <header>
 	<nav class="navbar">
@@ -33,7 +34,7 @@
 	      <li><a href="#">Page 2</a></li>
 	    </ul>-->
 	    <ul class="nav navbar-nav navbar-right">
-	    	<li><a id="user_welcome"><?php if($logged_in == 1) { echo 'Hi '.$user->forename; } ?></a></li>
+	    	<li><a id="user_welcome"><?php if($this->session->userdata('logged_in') == true) { echo 'Hi '.$user->forename; } ?></a></li>
 <!-- 			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
 	    </ul>
@@ -43,4 +44,3 @@
 
 
 
-<body>

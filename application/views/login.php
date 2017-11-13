@@ -6,8 +6,8 @@
                 <p id="login-title" class="form-title">
                     SIGN IN</p>
                 <form id="login-form" class="login">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
+                <input type="text" placeholder="Username" name="username" required />
+                <input type="password" placeholder="Password" name="password" required />
                 <input type="submit" value="SIGN IN" class="btn btn-success btn-sm" />
                 <div class="remember-forgot">
                     <div class="row">
@@ -29,4 +29,33 @@
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+	$(document).on('submit', '#login-form', function(){
+		event.preventDefault();
+		var form = $('#login-form');
+		var data_string = $(form).serialize();		
+		jQuery.ajax({
+			type: "POST",
+			url: "<?php echo base_url(); ?>" + "login/login",
+			dataType: 'json',
+			data: data_string,
+			success: function(json) {
+				if(json) {
+					console.log("Success " + json.name);
+					if(json.success == true) {
+						window.location.href = "<?php echo base_url(); ?>" + "home";
+					}
+					
+				}
+				else {
+					console.log("Failure");
+				}
+			}
+		});
+	});
+});	
+  
+</script>
 

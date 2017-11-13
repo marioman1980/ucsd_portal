@@ -6,6 +6,12 @@ class Home extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+
+        if (!($this->session->userdata('logged_in'))){
+        /* If user is not logged in, redirect to login */
+            redirect(base_url('login'));
+        }  
+
         $this->load->model('user_model');
         $this->load->model('application_model');
     }
