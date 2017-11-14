@@ -7,6 +7,8 @@ class Login extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('user_model');
+        $this->load->helper(array('form')); 
+        $this->load->library('form_validation');
     }
 
 	public function index($title = 'UCSD Applicant Portal')	{
@@ -14,6 +16,10 @@ class Login extends CI_Controller {
         if ( ! file_exists(APPPATH.'views/login.php')) {
             show_404();
         }
+        if($this->session->logged_in == true) {
+            header('Location: '.base_url('home'));
+        }
+
 
         $data['title'] = $title;
 
@@ -24,20 +30,30 @@ class Login extends CI_Controller {
 
     public function login(){
 
-        $user_record = $this->user_model->validate_user(); 
-        $user_id = $user_record->id;
+        $this->form_validation->set_rules('username', 'Username', array('required', 'trim'));
+        $this->form_validation->set_rules('password', 'Password', array('required', 'trim'));
 
-        if(($user_record->password) == $this->input->post('password')) {
-            $this->session->set_userdata('logged_in', true);
-            $response['success'] = true;
+        /* If there are errors, add messages to response */
+        if ($this->form_validation->run() == FALSE) { 
+            $response['success'] = false;
+            $response['error'] = validation_errors();
+        }
+        else {        
+
+            $user_record = $this->user_model->validate_user(); 
+
+            if(($user_record->password) == $this->input->post('password')) {
+                $this->session->set_userdata('user_record', $user_record);
+                $this->session->set_userdata('logged_in', true);
+                $response['success'] = true;
+            }
+            else {
+                $response['success'] = false;
+                $this->session->set_userdata('logged_in', false);
+            }
+
         }
 
-
-
-
-        $response['name'] = $this->input->post('username');
-
-        //Either you can print value or you can send value to database
         echo json_encode($response);
     }
     

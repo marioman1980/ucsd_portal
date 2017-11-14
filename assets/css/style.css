@@ -103,3 +103,7 @@ p.form-title {
 {
     color: #6FC41C;
 }
+
+.form-errors {
+	color: #E34724;
+}

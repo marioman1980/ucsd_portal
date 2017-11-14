@@ -1,16 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends MY_Controller {
 
     public function __construct()
     {
         parent::__construct();
-
-        if (!($this->session->userdata('logged_in'))){
-        /* If user is not logged in, redirect to login */
-            redirect(base_url('login'));
-        }  
 
         $this->load->model('user_model');
         $this->load->model('application_model');
@@ -23,8 +18,8 @@ class Home extends CI_Controller {
         }
 
         $data['title'] = $title;
-        $data['user'] = $this->user_model->get_user(1);
-        $data['applications'] = $this->application_model->get_user_applications(1);
+        $data['user'] = $this->user_model->get_user($this->session->user_record->id);
+        $data['applications'] = $this->application_model->get_user_applications($this->session->user_record->id);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('home', $data);

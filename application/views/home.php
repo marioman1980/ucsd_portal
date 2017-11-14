@@ -1,4 +1,4 @@
-
+<?php echo $this->session->logged_in; ?>
 
 <div class="row">
 	<div class="col-sm-4">

@@ -6,24 +6,27 @@
                 <p id="login-title" class="form-title">
                     SIGN IN</p>
                 <form id="login-form" class="login">
-                <input type="text" placeholder="Username" name="username" required />
-                <input type="password" placeholder="Password" name="password" required />
-                <input type="submit" value="SIGN IN" class="btn btn-success btn-sm" />
-                <div class="remember-forgot">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" />
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <div id="forgot-pass-content" class="col-md-6">
-                            <a href="javascript:void(0)" class="forgot-pass">Forgot Password</a>
-                        </div>
-                    </div>
-                </div>
+	                <input type="text" placeholder="Username" name="username"  />
+	                <input type="password" placeholder="Password" name="password"  />
+	                <input type="submit" value="SIGN IN" class="btn btn-success btn-sm" />
+	                <div class="remember-forgot">
+	                    <div class="row">
+	                        <div class="col-md-6">
+	                            <div class="checkbox">
+	                                <label>
+	                                    <input type="checkbox" />
+	                                    Remember Me
+	                                </label>
+	                            </div>
+	                        </div>
+	                        <div id="forgot-pass-content" class="col-md-6">
+	                            <a href="javascript:void(0)" class="forgot-pass">Forgot Password</a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-errors">
+                	
+	                </div>
                 </form>
             </div>
         </div>
@@ -43,9 +46,11 @@ $(document).ready(function() {
 			data: data_string,
 			success: function(json) {
 				if(json) {
-					console.log("Success " + json.name);
 					if(json.success == true) {
 						window.location.href = "<?php echo base_url(); ?>" + "home";
+					}
+					else {
+						$('.form-errors').html('<p>Username and password do not match</p>');
 					}
 					
 				}
