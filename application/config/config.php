@@ -35,7 +35,7 @@ $config['base_url'] = 'http://localhost/ucsd_portal';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -46,13 +46,13 @@ $config['index_page'] = 'index.php';
 | URI string.  The default setting of 'REQUEST_URI' works for most servers.
 | If your links do not seem to work, try one of the other delicious flavors:
 |
-| 'REQUEST_URI'    Uses $_SERVER['REQUEST_URI']
+| 'REQUEST_URI'    Uses $_SERVER['REQUEST_URI'] - DEFAULT
 | 'QUERY_STRING'   Uses $_SERVER['QUERY_STRING']
 | 'PATH_INFO'      Uses $_SERVER['PATH_INFO']
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +64,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | https://codeigniter.com/user_guide/general/urls.html
 */
+// $config['url_suffix'] = 'index.php';
 $config['url_suffix'] = '';
 
 /*
