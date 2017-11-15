@@ -35,7 +35,8 @@ $config['base_url'] = 'http://localhost/ucsd_portal';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
+// $config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,7 @@ $config['uri_protocol']	= 'AUTO';
 |
 | https://codeigniter.com/user_guide/general/urls.html
 */
-// $config['url_suffix'] = 'index.php';
+
 $config['url_suffix'] = '';
 
 /*
